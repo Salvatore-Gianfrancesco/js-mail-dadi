@@ -14,7 +14,15 @@ submit.addEventListener("click",
     function () {
         const email = document.querySelector("input").value;
 
-        if (mailList.includes(email)) {
+        let found = false;
+
+        for (let i = 0; i < mailList.length; i++) {
+            if (mailList[i] === email) {
+                found = true;
+            }
+        }
+
+        if (found) {
             // console.log("Email esistente");
 
             let diceComputer = Math.floor(Math.random() * 6 + 1);
