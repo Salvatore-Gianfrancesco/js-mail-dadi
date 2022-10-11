@@ -9,22 +9,33 @@ const mailList = [
 ];
 // console.log(mailList);
 
-const email = prompt("Inserisci la tua email");
+const submit = document.querySelector("button");
+submit.addEventListener("click",
+    function () {
+        const email = document.querySelector("input").value;
 
-if (mailList.includes(email)) {
-    console.log("Email esistente");
+        if (mailList.includes(email)) {
+            // console.log("Email esistente");
 
-    let diceComputer = Math.floor(Math.random() * 6 + 1);
-    let diceUser = Math.floor(Math.random() * 6 + 1);
-    console.log(diceComputer, diceUser);
+            let diceComputer = Math.floor(Math.random() * 6 + 1);
+            let diceUser = Math.floor(Math.random() * 6 + 1);
+            // console.log(diceComputer, diceUser);
+            document.getElementById("dice_computer").innerHTML = diceComputer;
+            document.getElementById("dice_user").innerHTML = diceUser;
 
-    if (diceUser > diceComputer) {
-        console.log("Hai vinto!!");
-    } else if (diceUser < diceComputer) {
-        console.log("Hai perso!!");
-    } else {
-        console.log("Pareggio!");
+            if (diceUser > diceComputer) {
+                // console.log("Hai vinto!!");
+                document.getElementById("game_result").innerHTML = "Hai vinto!!";
+            } else if (diceUser < diceComputer) {
+                // console.log("Hai perso!!");
+                document.getElementById("game_result").innerHTML = "Hai perso!!";
+            } else {
+                // console.log("Pareggio!");
+                document.getElementById("game_result").innerHTML = "Pareggio!";
+            }
+        } else {
+            // console.log("Email inesistente o errata");
+            alert("Email inesistente o errata");
+        }
     }
-} else {
-    console.log("Email inesistente o errata");
-}
+);
